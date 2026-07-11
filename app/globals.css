@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-ink-950 font-sans font-light text-stone-light antialiased;
+}
+
+::selection {
+  background: rgba(201, 179, 128, 0.25);
+  color: #f4f1ea;
+}
+
+@layer components {
+  /* Small uppercase over-title, gold */
+  .eyebrow {
+    @apply block text-[11px] font-normal uppercase tracking-widest2 text-gold;
+  }
+
+  /* 1px separator line */
+  .hairline {
+    @apply h-px w-full border-0 bg-white/10;
+  }
+
+  .hairline-gold {
+    @apply h-px w-full border-0 bg-gold-faint;
+  }
+
+  /* Outlined button, fills with champagne on hover */
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-3 border border-gold/60 bg-transparent px-9 py-4 text-[12px] font-normal uppercase tracking-widest2 text-gold transition-all duration-500 ease-slow hover:border-gold hover:bg-gold hover:text-ink-950 focus:outline-none focus-visible:ring-1 focus-visible:ring-gold/70;
+  }
+
+  /* Quiet text link */
+  .link-quiet {
+    @apply text-sm text-stone-dim transition-colors duration-500 hover:text-stone-light;
+  }
+}
+
+/* Scroll reveal — slow, restrained */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Minimal scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2a2b;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3a3b;
+}
